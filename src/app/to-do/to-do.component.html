@@ -1,0 +1,27 @@
+<div class="row mg_0">
+
+    
+    <div class="row pd_20 mg_0">
+        <h3 class="mg_0 pd_100">ToDo List</h3>
+        <form (submit)="addTodo()">
+        <div class="row">
+            <div class="col-8">
+                <div class="form-group d-flex justify-content-end">
+                    <input type="text" id="todoName" name="inputTodo" [(ngModel)]="inputTodo" placeholder="New Task">
+                </div>
+            </div>
+            <div class="col-4">
+                <input type="submit" class="btn btn-primary" value="Add" (click)=(getDataFromAPi())>
+            </div>
+        </div>
+        </form>
+        <div class="row mg_0 pd_20">
+            <div class="row border todoview {{ (todo.completed ? 'done' : '') }}" *ngFor="let todo of newData; let i = index;">    
+                <div class="col-2" ><input type="checkbox" [checked] = "(todo.completed ? 'true' : '')" (click)="isDone(i)" ></div>
+                <div class="col-8"><p class="content">{{todo.content}}</p></div>
+                <div class="col-2 d-flex justify-content-end"><img src="./../../assets/Images/icons8-trash-100.png" alt="" (click)="deleteTodo(i)"></div>
+            </div>
+        </div>
+    </div>
+    
+</div>
